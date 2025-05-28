@@ -1,7 +1,8 @@
 // main.js
 import initializeSlick from "./components/logo-section/secript.js";
 import initializeSlickSlider2 from './components/slider2/slider2.js';
-import initializeReviewSlider from './components/review/review.js'
+import initializeReviewSlider from './components/review/review.js';
+import initializeViewToggle from './pages/collections/earring-collection/earring-collection.js'
 // myAlert("guten tag!")
 
 
@@ -76,7 +77,7 @@ const routes = {
   // Collection routes
   '/collections/bracelet': '/pages/collections/bracelet.html',
   '/collections/bridal-jewellery': '/pages/collections/bridal-jewellery.html',
-  '/collections/earring': '/pages/collections/earring.html',
+  '/collections/earring': '/pages/collections/earring-collection/earring.html',
   '/collections/mens-jewellery': '/pages/collections/mens-jewellery.html',
   '/collections/engagement-ring': '/pages/collections/engagement-ring.html',
   // Add other routes here
@@ -104,7 +105,8 @@ async function renderPage(path = '/') {
     // 🆕 Initialize slick (after logos are in the DOM)
     initializeSlick();
     initializeSlickSlider2();
-    initializeReviewSlider()
+    initializeReviewSlider();
+    initializeViewToggle();
 
 
     // Update active link in navbar
