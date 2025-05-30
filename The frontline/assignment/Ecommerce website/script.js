@@ -31,6 +31,27 @@ setInterval(showNextMessage, 3000);
     navLinks.classList.toggle('show');
   }
 
+  // Signup
+  window.addEventListener("load", function () {
+  const overlay = document.getElementById("overlay");
+  const closeBtn = document.getElementById("closeBtn");
+  const noThanks = document.getElementById("noThanks");
+
+  overlay.style.display = "flex";
+
+  closeBtn.addEventListener("click", function () {
+    overlay.style.display = "none";
+  });
+
+  noThanks.addEventListener("click", function (e) {
+    e.preventDefault();
+    overlay.style.display = "none";
+  });
+});
+
+
+
+
 // Slider
 const slidesData = [
   {
@@ -292,6 +313,208 @@ products.forEach((product) => {
   document.getElementById("featuredProducts").appendChild(card);
 });
 
+
+// Beauty 
+document.addEventListener("DOMContentLoaded", () => {
+  const section = document.querySelector(".beauty-section");
+
+  // Show after a short delay (simulate scroll or load animation)
+  setTimeout(() => {
+    section.classList.add("visible");
+  }, 300);
+});
+
+//Deal
+const deals = [
+  {
+    tag: "Deal of the Day!",
+    heading: "Define yourself<br>be different.",
+    desc: "Here is your chance to upgrade your wardrobe with a variation of styles and fits that are both.",
+    images: ["assets/banner-5.webp", "assets/banner-6.webp"],
+    button: "Shop Now"
+  }
+];
+
+
+const dealContainer = document.getElementById("dealContainer");
+
+deals.forEach((deal) => {
+  const section = document.createElement("section");
+  section.className = "deal-section";
+
+  section.innerHTML = `
+    <div class="deal-images">
+      <img src="${deal.images[0]}" alt="Deal Image 1">
+      <img src="${deal.images[1]}" alt="Deal Image 2">
+    </div>
+    <div class="deal-text">
+      <small>${deal.tag}</small>
+      <h2>${deal.heading}</h2>
+      <p>${deal.desc}</p>
+      <button>${deal.button}</button>
+    </div>
+  `;
+
+  dealContainer.appendChild(section);
+});
+
+
+
+// Payment section
+const features = [
+  {
+    icon: "🧴",
+    title: "Cruelty free & Vegan",
+    description: "High shine, long-lasting vegan nail polishes in a range of fashion colors and finishes."
+  },
+  {
+    icon: "🌿",
+    title: "Natural Ingredients",
+    description: "Our products use plant-based, skin-friendly formulas without harmful chemicals."
+  },
+  {
+    icon: "✨",
+    title: "Glowing Finish",
+    description: "Leaves your nails with a professional salon-like glow that lasts for days."
+  }
+];
+
+const section = document.getElementById("features-section");
+
+features.forEach(item => {
+  const box = document.createElement("div");
+  box.className = "feature-box";
+
+  box.innerHTML = `
+    <div class="feature-content">
+      <div class="feature-icon">${item.icon}</div>
+      <div>
+        <div class="feature-title">${item.title}</div>
+        <div class="feature-description">${item.description}</div>
+      </div>
+    </div>
+  `;
+
+  section.appendChild(box);
+});
+
+//Hero
+const heroSection = document.getElementById("hero-section");
+
+heroSection.innerHTML = `
+  <div class="hero-image-wrapper">
+    <img src="assets/banner-4.webp" alt="Hero image" class="hero-image-bg" />
+    <div class="hero-text-overlay">
+      <h1>Freshly picked<br>is here!</h1>
+      <p>Here is your chance to upgrade your wardrobe with a variation of styles and fits that are both.</p>
+      <button>Shop Now</button>
+    </div>
+  </div>
+`;
+
+
+/////////////////////////////////////// FAQ ///////////////////////////////////////////////////////
+const questions = document.querySelectorAll('.faq-question');
+
+questions.forEach(btn => {
+  btn.addEventListener('click', () => {
+    const isActive = btn.classList.contains('active');
+
+    // Close all open answers
+    questions.forEach(q => {
+      q.classList.remove('active');
+      q.nextElementSibling.style.maxHeight = null;
+      q.querySelector('.arrow').textContent = '˅';
+    });
+
+    // Open clicked one if it was not active
+    if (!isActive) {
+      btn.classList.add('active');
+      const answer = btn.nextElementSibling;
+      const arrow = btn.querySelector('.arrow');
+      answer.style.maxHeight = answer.scrollHeight + 'px';
+      arrow.textContent = '˄'; // upward arrow
+    }
+  });
+});
+
+/////////////////////////////////////// Testimonial  ///////////////////////////////////////////////////////
+const testimonials = [
+  {
+    name: "John",
+    feedback: "Thanks for the feedback. We are always looking to improve our product and we would love to look into this issue with you further.",
+    image: "assets/testimonial-3.webp"
+  },
+  {
+    name: "Jenifer",
+    feedback: "Thanks for the feedback. We are always looking to improve our product and we would love to look into this issue with you further.",
+    image: "assets/testimonial-2.webp"
+  },
+  {
+    name: "Chawdhuri",
+    feedback: "Thanks for the feedback. We are always looking to improve our product and we would love to look into this issue with you further.!",
+    image: "assets/testimonial-4.webp"
+  }
+];
+
+const feedbackEl = document.getElementById("feedback");
+const nameEl = document.getElementById("name");
+const imageEl = document.getElementById("testimonial-img");
+const dotsEl = document.getElementById("dots");
+
+let dots = [];
+
+testimonials.forEach((_, index) => {
+  const dot = document.createElement("span");
+
+  // 👇 Only change testimonial on press/hold
+  dot.addEventListener("mousedown", () => showTestimonial(index));
+
+  dotsEl.appendChild(dot);
+  dots.push(dot);
+});
+
+function showTestimonial(index) {
+  const { name, feedback, image } = testimonials[index];
+
+  // Remove animation class to re-trigger it
+  feedbackEl.classList.remove("slide-in");
+  imageEl.classList.remove("slide-in");
+
+  // Force reflow
+  void feedbackEl.offsetWidth;
+  void imageEl.offsetWidth;
+
+  // Update content
+  feedbackEl.textContent = feedback;
+  nameEl.textContent = name;
+  imageEl.src = image;
+
+  // Add animation
+  feedbackEl.classList.add("slide-in");
+  imageEl.classList.add("slide-in");
+
+  // Update active dot
+  dots.forEach((dot, i) => {
+    dot.classList.toggle("active", i === index);
+  });
+}
+
+// Show first testimonial on load
+showTestimonial(0);
+
+/////////////////////////////////////// Instagram  ///////////////////////////////////////////////////////
+const tickerTrack = document.getElementById('ticker-track');
+const message = "✔ WELCOME TO OUR STORE ";
+const repeatCount = 30; // Adjust for desired length
+
+for (let i = 0; i < repeatCount; i++) {
+  const span = document.createElement('span');
+  // Alternate between solid and outline style
+  span.classList.add(i % 2 === 0 ? 'solid-text' : 'outline-text');
+  span.textContent = message;
+  tickerTrack.appendChild(span);
+}
 
 
 
