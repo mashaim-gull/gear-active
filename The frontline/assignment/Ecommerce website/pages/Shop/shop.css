@@ -5,7 +5,245 @@
   --bg: #fff;
   --white: #fff;
   --font: 'Segoe UI', sans-serif;
-  --text-color: #000;
+  --text-color: #fff;
+  --gray: #777;
+  --hover-bg: #f2f2f2;
+  --blue: #007bff;
+  --green: #28a745;
+  --black: #000;
+  --bg-white: #fff;
+  --color-text: #000;
+
+  --font-family: Arial, sans-serif;
+  --action-color: #b4d6bd;
+  --link-color: #333;
+  --navbar-bg: white;
+  --border-color: #ddd;
+  --hover-underline-color: black;
+  --icon-badge-bg: black;
+  --icon-badge-color: white;
+  --nav-gap: 30px;
+  --flash-sale-height: 30px;
+  --font-size-sm: 14px;
+  --font-size-md: 16px;
+  --font-size-lg: 24px;
+  --padding-sm: 5px;
+  --padding-md: 15px;
+  --padding-lg: 30px;
+
+  --bg-color: #0d1c1c;
+  --accent-color: #22c1c3;
+  --line-color: #1a2e2e;
+  --font-size-base: 16px;
+  --spacing: 1rem;
+}
+
+
+body {
+  margin: 0;
+  font-family: var(--font);
+  background-color: var(--bg);
+}
+
+
+.flash-sale-container {
+  background-color: var(--action-color);
+  overflow: hidden;
+  height: var(--flash-sale-height);
+  position: relative;
+}
+
+.flash-sale {
+  position: relative;
+  height: 90%;
+}
+
+.flash-slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  font-size: var(--font-size-sm);
+  line-height: var(--flash-sale-height);
+  transform: translateX(-100%);
+  animation: slideLeft 0.5s forwards;
+}
+
+@keyframes slideLeft {
+  to {
+    transform: translateX(0%);
+  }
+}
+
+.flash-sale a {
+  color: var(--link-color);
+  text-decoration: none;
+  margin-left: 5px;
+}
+
+/*Navbar*/
+/* Hide hamburger icon by default (only for desktop) */
+.menu-toggle,
+.mobile-left {
+  display: none;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--padding-md) var(--padding-lg);
+  border-bottom: 1px solid var(--border-color);
+  background-color: var(--navbar-bg);
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+.top-left select {
+  margin-right: 15px;
+  padding: var(--padding-sm);
+  border: 1px solid #ccc;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: var(--font-size-lg);
+  font-weight: bold;
+}
+
+.logo img {
+  max-width: 280px;
+}
+
+.icons {
+  display: flex;
+  gap: 20px;
+}
+
+.icon {
+  position: relative;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.icon sup {
+  font-size: 10px;
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: var(--icon-badge-bg);
+  color: var(--icon-badge-color);
+  border-radius: 50%;
+  padding: 2px 5px;
+}
+
+.nav-links ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  padding: 10px 0;
+  margin: 0;
+  gap: var(--nav-gap);
+  background-color: var(--navbar-bg);
+  font-size: var(--font-size-md);
+}
+
+.nav-links ul li {
+  cursor: pointer;
+  position: relative;
+}
+
+nav ul li a {
+  color: black; /* ya jo bhi color chahiye */
+  text-decoration: none;
+}
+
+.nav-links ul li:hover::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background: var(--hover-underline-color);
+  bottom: -5px;
+  left: 0;
+}
+
+/* -------------------- Mobile View -------------------- */
+@media (max-width: 768px) {
+  .top-left {
+    display: none;
+  }
+
+  .navbar {
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 5%;
+  }
+
+  .mobile-left {
+    display: block;
+  }
+
+  .menu-toggle {
+    display: block;
+    font-size: 26px;
+    cursor: pointer;
+  }
+
+  .logo {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+  }
+
+  .logo img {
+    max-width: 160px;
+  }
+
+  .icons {
+    display: flex;
+    gap: 10px;
+  }
+
+  .nav-links {
+    display: none;
+    width: 100%;
+    background-color: white;
+    border-top: 1px solid #ccc;
+  }
+
+  .nav-links.show {
+    display: block;
+  }
+
+  .nav-links ul {
+    flex-direction: column;
+    padding: 10px 20px;
+    margin: 0;
+    list-style: none;
+  }
+
+  .nav-links ul li {
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+  }
+}
+
+
+
+
+
+:root {
+  --primary: #121212;
+  --secondary: #555;
+  --highlight: #ff5a00;
+  --bg: #fff;
+  --white: #fff;
+  --font: 'Segoe UI', sans-serif;
+  --text-color: #fff;
   --gray: #777;
   --hover-bg: #f2f2f2;
   --blue: #007bff;
@@ -439,5 +677,138 @@ body {
   }
   .pagination {
     gap: 10px;
+  }
+}
+
+
+
+
+
+/* ======= FOOTER CSS ======= */
+.footer {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  padding: 5rem;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--line-color);
+  padding-bottom: 2rem;
+}
+
+.footer-column {
+  flex: 1 1 200px;
+  margin: var(--spacing);
+  position: relative;
+}
+
+.footer-heading {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.toggle-icon {
+  display: none;
+}
+
+.footer-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-list li {
+  margin-bottom: 0.5rem;
+}
+
+.footer-list a {
+  color: var(--text-color);
+  text-decoration: none;
+}
+
+/* Email Form */
+.footer-form {
+  margin-top: 1rem;
+}
+
+.input-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 300px;
+}
+
+.input-wrapper input {
+  width: 250px;
+  padding: 0.75rem 3rem 0.75rem 1rem;
+  border: 1px solid var(--line-color);
+  background-color: transparent;
+  color: var(--text-color);
+  font-size: var(--font-size-sm);
+  border-radius: 4px;
+  outline: none;
+}
+
+.input-wrapper button {
+  position: absolute;
+  right: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: transparent;
+  border: none;
+  color: var(--text-color);
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+/* Bottom section */
+.footer-line {
+  height: 1px;
+  background-color: var(--line-color);
+  margin: 1rem 0;
+}
+
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.social-icons a {
+  color: var(--text-color);
+  margin-left: 1rem;
+  font-size: 1.2rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .social-icons {
+    margin-top: 10px;
+  }
+
+  .footer-form {
+    width: 100%;
+  }
+
+  .input-wrapper {
+    max-width: 100%;
   }
 }

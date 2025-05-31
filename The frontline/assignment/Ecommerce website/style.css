@@ -250,7 +250,6 @@ body {
 
 
 /*Navbar*/
-
 /* Hide hamburger icon by default (only for desktop) */
 .menu-toggle,
 .mobile-left {
@@ -317,11 +316,17 @@ body {
   gap: var(--nav-gap);
   background-color: var(--navbar-bg);
   font-size: var(--font-size-md);
+  color: black;
 }
 
 .nav-links ul li {
   cursor: pointer;
   position: relative;
+}
+
+nav ul li a {
+  color: black; /* ya jo bhi color chahiye */
+  text-decoration: none;
 }
 
 .nav-links ul li:hover::after {
@@ -603,6 +608,7 @@ body {
     margin: 0;
   }
 }
+
 
 
 
@@ -1578,13 +1584,13 @@ body {
   margin-bottom: 2rem;
 }
 
-.dots {
+.dots-1 {
   display: flex;
   gap: var(--dot-gap);
   padding-top: 33%;
 }
 
-.dots span {
+.dots-1 span {
   width: var(--dot-size);
   height: var(--dot-size);
   background: var(--dot-inactive);
@@ -1593,8 +1599,8 @@ body {
   transition: background 0.3s;
 }
 
-.dots span.active,
-.dots span:hover {
+.dots-1 span.active,
+.dots-1 span:hover {
   background: var(--dot-active);
 }
 

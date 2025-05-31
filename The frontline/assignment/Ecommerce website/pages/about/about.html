@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Contact</title>
-  <link rel="stylesheet" href="contact.css">
+  <title>About</title>
+  <link rel="stylesheet" href="about.css">
 </head>
 <body>
 
@@ -49,83 +49,119 @@
   <nav class="nav-links" id="navMenu">
     <ul>
       <li><a href="../../index.html">Home</a></li>
-<li><a href="../shop/shop.html">Shop</a></li>
-<li><a href="../about/about.html">About us</a></li>
-<li><a href="../blog/blog.html">Blog</a></li>
-<li><a href="#">pages</a></li>
-<li><a href="contact.html">Contact</a></li>
+      <li><a href="pages/shop/shop.html">Shop</a></li>
+      <li><a href="about/about.html">About us</a></li>
+      <li><a href="pages/blog/blog.html">Blog</a></li>
+      <li><a href="#">Pages</a></li>
+      <li><a href="pages/contact/contact.html">Contact</a></li>
 
     </ul>
   </nav>
 
+
 <!-- Header Section -->
-<header class="contact-header">
+<header class="about-header">
   <div class="container">
-    <h1>contact</h1>
-    <p>Home • contact</p>
+    <h1>about us</h1>
+    <p>Home • about us</p>
   </div>
 </header>
 
-<div class="container1">
 
-  <!-- Left side -->
-  <div class="left">
-  <h2>Get in touch</h2>
-  <div class="contact-info">
-    <p>
-      <strong>Phone:</strong><br />
-      +92 300 1234567
-    </p>
-    <p>
-      <strong>Email:</strong><br />
-      example@mail.com
-    </p>
-    <p>
-      <strong>Address:</strong><br />
-      123 Street, City, Pakistan
-    </p>
+<section class="two-container-section">
+    <div class="content">
+      <h2 class="heading">Our story</h2>
+      <p class="description">
+        Welcome to Sanova – where passion meets innovation. Founded on the principles of quality, dedication, and trust, 
+        Sanova has been delivering exceptional products/services to our valued customers since 2000.
+      </p>
+
+      <p class="description-1">
+        Our journey began with a simple vision: to create a solution that not only meets needs but also exceeds expectations.
+      </p>
+
+    </div>
+    <div class="image-container">
+      <img src="../../assets/testimonial-1.webp" alt="Image" />
+    </div>
+  </section>
+
+   <!-- Looping Marquee Section -->
+ <div class="ticker-container">
+  <div class="ticker-track" id="ticker-track">
+    <!-- JS will inject spans here -->
   </div>
 </div>
 
-  <!-- Right side form box -->
-  <div class="right">
-    <form>
-      <div class="form-group">
-        <label for="name">Name:</label>
-        <input type="text" id="name" placeholder=" " />
-      </div>
-
-      <div class="form-group">
-        <label for="email">Email:</label>
-        <input type="email" id="email" placeholder=" " />
-      </div>
-
-      <div class="form-group">
-        <label for="phone">Phone:</label>
-        <input type="tel" id="phone" placeholder=" " />
-      </div>
-
-      <div class="form-group">
-        <label for="message">Message:</label>
-        <textarea id="message" placeholder=" "></textarea>
-      </div>
-<button type="submit" class="btn-send">Send Now</button>
-    </form>
+<section class="two-container-section">
+  <div class="image-container">
+    <img src="../../assets/testimonial-3.webp" alt="Image" />
   </div>
+  <div class="content">
+    <h2 class="heading">Who We Are ?</h2>
+    <p class="description">
+     Welcome to Sanova – where passion meets innovation. Founded on the principles of quality, 
+     dedication, and trust, Sanova has been delivering exceptional products/services to our valued customers since 2000.
+    </p>
+    <p class="description-1">
+      Our journey began with a simple vision: to create a solution that not only meets needs but also exceeds expectations.
+    </p>
+  </div>
+</section>
+
+<section id="features-section" class="features-section"></section>
+
+
+<section class="video-bg-section">
+  <!-- Modal for video -->
+  <div class="video-modal" id="videoModal">
+    <div class="modal-content">
+      <span class="close-btn" id="closeBtn">&times;</span>
+      <iframe
+        id="videoFrame"
+        width="800"
+        height="450"
+        src=""
+        frameborder="0"
+        allow="autoplay; encrypted-media"
+        allowfullscreen
+      ></iframe>
+    </div>
   </div>
 
-<!-- Google Map Section -->
-<div class="map-container">
-  <iframe
-    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2381.786331433399!2d-6.261043384631755!3d53.34383647997921!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48670e9d816948b1%3A0x8a7ad71ab465fd71!2s1%20Grafton%20Street%2C%20Dublin%2C%20Ireland!5e0!3m2!1sen!2s!4v1717070863085!5m2!1sen!2s"
-    width="100%"
-    height="350"
-    style="border:0;"
-    allowfullscreen=""
-    loading="lazy"
-    referrerpolicy="no-referrer-when-downgrade">
-  </iframe>
+  <!-- Thumbnail with play icon -->
+  <div class="overlay-content" id="thumbnailWrapper">
+    <img src="../../assets/face.avif" alt="Video Thumbnail" class="foreground-image" />
+    <div class="play-icon" id="playBtn">▶️</div>
+  </div>
+
+  <!-- Background video iframe (hidden by default) -->
+  <div class="background-video" id="backgroundVideo" style="display:none;">
+    <iframe
+      src="https://www.youtube.com/embed/9no7Q4jYnsI?autoplay=1&mute=1&loop=1&playlist=9no7Q4jYnsI&controls=0&modestbranding=1&showinfo=0&rel=0"
+      frameborder="0"
+      allow="autoplay; encrypted-media"
+      allowfullscreen
+      playsinline
+    ></iframe>
+  </div>
+</section>
+
+
+<!-- Team section -->
+ <section class="category-section">
+   <div class="heading-row">
+  <h2>Meet Our Teams</h2>
+ 
+  <div class="nav-buttons">
+    <button onclick="scrollLeft()">&lt;</button>
+      <button onclick="scrollRight()">&gt;</button>
+  </div>
 </div>
+<div id="category-container" class="category-row"></div>
+
+   </section>
+
 
 <!-- subscribe-section -->
 <section class="subscribe-section">
@@ -137,6 +173,13 @@
     </form>
   </div>
 </section>
+
+
+
+
+
+
+
 
 
 <!-- Main Footer -->
@@ -203,7 +246,6 @@
   </div>
 </footer>
 
-
-<script src="contact.js"></script>
+<script src="about.js"></script>
 </body>
 </html>
