@@ -85,7 +85,7 @@ const routes = {
 
 // Load and render page
 async function renderPage(path = '/') {
-  const app = document.getElementById('app');
+  const app = document.getElementById('app'); 
   try {
     const pagePath = routes[path] || '/pages/404.html';
     const pageHTML = await loadHTML(pagePath);
@@ -96,8 +96,7 @@ async function renderPage(path = '/') {
     await injectComponents(tempDiv);
     app.innerHTML = tempDiv.innerHTML;
     
-    await injectComponents(tempDiv);
-    app.innerHTML = tempDiv.innerHTML;
+   
 
     // Initialize dropdowns
     initializeDropdowns();

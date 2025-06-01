@@ -1,4 +1,5 @@
 // main.js
+console.log("main.js loaded");
 
 // Load a single HTML file as string
 async function loadHTML(path) {
