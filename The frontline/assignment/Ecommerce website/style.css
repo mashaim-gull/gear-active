@@ -9,7 +9,9 @@ body {
 }
 
 :root {
+ --font: 'Segoe UI', sans-serif;
   --font-family: Arial, sans-serif;
+  --font-heading-family: "Playfair Display", serif;
   --action-color: #b4d6bd;
   --link-color: #333;
   --navbar-bg: white;
@@ -25,6 +27,12 @@ body {
   --padding-sm: 5px;
   --padding-md: 15px;
   --padding-lg: 30px;
+   --icon-bg: #f5f5f5;
+  --icon-hover-bg: #e0e0e0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading-family);
 }
 
 .flash-sale-container {
@@ -257,18 +265,35 @@ body {
 }
 
 .navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background-color: var(--navbar-bg);
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: var(--padding-md) var(--padding-lg);
-  border-bottom: 1px solid var(--border-color);
-  background-color: var(--navbar-bg);
   padding-left: 5%;
   padding-right: 5%;
+  border-bottom: 1px solid var(--border-color);
 }
 
+.nav-links {
+  position: fixed;
+  top: 80px; /* adjust if navbar is taller or shorter */
+  left: 0;
+  width: 100%;
+  z-index: 999;
+  background-color: var(--navbar-bg);
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+
 .top-left select {
-  margin-right: 15px;
+  margin-right: 12px;
   padding: var(--padding-sm);
   border: 1px solid #ccc;
 }
@@ -287,24 +312,56 @@ body {
 
 .icons {
   display: flex;
-  gap: 20px;
+  gap: 5px;
+  align-items: center;
+  justify-content: center;
+  padding-right: 1%;
+  /* Add this to avoid overflow cutting off badges */
+  position: relative;
+  /* or you can add min-width */
+  min-width: 200px;
+   
+  
 }
 
 .icon {
-  position: relative;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #f5f5f5 !important;
+  color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-size: 20px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
   cursor: pointer;
+  transition: background 0.3s ease;
+  position: relative;
+  
 }
 
-.icon sup {
-  font-size: 10px;
+
+.icon:hover {
+  background: var(--icon-hover-bg) !important;
+}
+
+
+.badge-icon .badge {
   position: absolute;
-  top: -8px;
-  right: -8px;
-  background: var(--icon-badge-bg);
-  color: var(--icon-badge-color);
+  top: 3px;          /* Adjusted for better alignment */
+  right: 3px;
+  background: var(--icon-badge-bg, #000);
+  color: var(--icon-badge-color, #000);
+  font-size: 10px;
+  font-weight: bold;
   border-radius: 50%;
-  padding: 2px 5px;
+  padding: 2px 6px;
+  line-height: 1;
+  min-width: 16px;
+  text-align: center;
+  pointer-events: none; /* So badge doesn't block clicks */
+  box-sizing: border-box;
 }
 
 .nav-links ul {
@@ -316,7 +373,6 @@ body {
   gap: var(--nav-gap);
   background-color: var(--navbar-bg);
   font-size: var(--font-size-md);
-  color: black;
 }
 
 .nav-links ul li {
@@ -338,6 +394,10 @@ nav ul li a {
   bottom: -5px;
   left: 0;
 }
+.nav-links {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.08); /* subtle shadow */
+}
+
 
 /* -------------------- Mobile View -------------------- */
 @media (max-width: 768px) {
@@ -417,6 +477,7 @@ nav ul li a {
   overflow: hidden;
   padding: 0 5%; /* Add left and right space */
   box-sizing: border-box;
+  padding-top: 2%;
 }
 
 .slides-container {
@@ -1551,7 +1612,7 @@ body {
   margin: auto;
   margin-left: 5%;
   margin-right: 5%;
-  margin-bottom: 50px;
+ 
 }
 .testimonial-content,
 .right-image {
@@ -1685,8 +1746,21 @@ body {
   overflow-x: hidden; /* Extra horizontal space hatao */
 }
 
+.instagram h2 {
+  text-align: center;
+  margin-bottom: 0; /* kam karein ya 0 kar dein */
+}
+
 .instagram h2 span {
   color: var(--accent-color);
+  padding-left: 0;
+}
+
+.instagram p {
+  text-align: center;
+  color: black;
+  margin-top: 0; /* Ye theek hai */
+  font-size: 1rem;
 }
 
 .instagram .images {
@@ -1715,6 +1789,7 @@ body {
   height: 320px;
   object-fit: cover;
   margin: 0;                  /* remove margin */
+  margin-top: 20%;
 }
 
 .insta-image .overlay {

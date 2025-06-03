@@ -1,58 +1,49 @@
 :root {
-  /* Primary Theme Colors */
   --primary: #121212;
   --secondary: #555;
   --highlight: #ff5a00;
   --bg: #fff;
   --white: #fff;
-  --black: #000;
+  --font: 'Segoe UI', sans-serif;
+  --text-color: #fff;
   --gray: #777;
+  --hover-bg: #f2f2f2;
   --blue: #007bff;
   --green: #28a745;
-
-  /* Font & Text */
-  --font: 'Segoe UI', sans-serif;
-  --font-family: Arial, sans-serif;
-  --text-color: #333;
-  --heading-color: #1a1a1a;
+  --black: #000;
+  --bg-white: #fff;
   --color-text: #000;
 
-  /* Layout Colors */
-  --bg-color: #f9f9f9;
-  --bg-white: #fff;
-  --hover-bg: #f2f2f2;
-  --line-color: #1a2e2e;
-  --accent-color: #22c1c3;
-  --action-color: #b4d6bd;
+  --marquee-speed: 30s;
 
-  /* Navbar & Link */
-  --navbar-bg: #ffffff;
+   --font: 'Segoe UI', sans-serif;
+  --font-family: Arial, sans-serif;
+  --font-heading-family: "Playfair Display", serif;
+  --action-color: #b4d6bd;
   --link-color: #333;
+  --navbar-bg: white;
+  --border-color: #ddd;
   --hover-underline-color: black;
   --icon-badge-bg: black;
   --icon-badge-color: white;
-
-  /* Font Sizes */
+  --nav-gap: 30px;
+  --flash-sale-height: 30px;
   --font-size-sm: 14px;
   --font-size-md: 16px;
   --font-size-lg: 24px;
-  --font-size-base: 16px;
-
-  /* Spacing & Padding */
-  --nav-gap: 30px;
-  --flash-sale-height: 30px;
-  --gap: 2rem;
   --padding-sm: 5px;
   --padding-md: 15px;
   --padding-lg: 30px;
-  --padding: 6rem;
+
+  --bg-color: #0d1c1c;
+  --accent-color: #22c1c3;
+  --line-color: #1a2e2e;
+  --font-size-base: 16px;
   --spacing: 1rem;
+}
 
-  /* Borders & Radius */
-  --border-color: #ddd;
-  --border-radius: 10px;
-
-  --marquee-speed: 30s;
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading-family);
 }
 
 
@@ -62,13 +53,15 @@ body {
   background-color: var(--bg);
 }
 
-
 .flash-sale-container {
-  background-color: var(--action-color);
+  background-color: var(--action-color, orange);
   overflow: hidden;
-  height: var(--flash-sale-height);
-  position: relative;
+  height: var(--flash-sale-height, 40px); /* fallback if variable is not set */
+  position: sticky; /* or fixed if needed */
+  top: 0;
+  z-index: 999; /* high enough to stay on top */
 }
+
 
 .flash-sale {
   position: relative;
@@ -80,22 +73,29 @@ body {
   width: 100%;
   height: 100%;
   text-align: center;
-  font-size: var(--font-size-sm);
-  line-height: var(--flash-sale-height);
-  transform: translateX(-100%);
-  animation: slideLeft 0.5s forwards;
+  font-size: var(--font-size-sm, 14px);
+  line-height: var(--flash-sale-height, 40px);
+  transform: translateX(100%);
+  animation: slideInStayJump 5s linear infinite;
+  will-change: transform; /* helps animation rendering */
 }
 
-@keyframes slideLeft {
-  to {
+@keyframes slideInStayJump {
+  0% {
+    transform: translateX(100%);
+  }
+  40% {
     transform: translateX(0%);
   }
-}
-
-.flash-sale a {
-  color: var(--link-color);
-  text-decoration: none;
-  margin-left: 5px;
+  80% {
+    transform: translateX(0%);
+  }
+  81% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
 }
 
 /*Navbar*/
@@ -106,15 +106,34 @@ body {
 }
 
 .navbar {
+  position: fixed;
+  top: 30px;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background-color: var(--navbar-bg);
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: var(--padding-md) var(--padding-lg);
-  border-bottom: 1px solid var(--border-color);
-  background-color: var(--navbar-bg);
   padding-left: 5%;
   padding-right: 5%;
+  border-bottom: 1px solid var(--border-color);
 }
+
+.nav-links {
+  position: fixed;
+  top: 110px; /* adjust if navbar is taller or shorter */
+
+  left: 0;
+  width: 100%;
+  z-index: 999;
+  background-color: var(--navbar-bg);
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+
 
 .top-left select {
   margin-right: 15px;
@@ -136,24 +155,54 @@ body {
 
 .icons {
   display: flex;
-  gap: 20px;
+  gap: 5px;
+  align-items: center;
+  justify-content: center;
+  padding-right: 12%;
+  /* Add this to avoid overflow cutting off badges */
+  position: relative;
+  /* or you can add min-width */
+  min-width: 200px;
+   
+  
 }
 
 .icon {
-  position: relative;
-  font-size: 20px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #f5f5f5 !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
   cursor: pointer;
+  transition: background 0.3s ease;
+  position: relative;
 }
 
-.icon sup {
-  font-size: 10px;
+
+.icon:hover {
+  background: var(--icon-hover-bg) !important;
+}
+
+
+.badge-icon .badge {
   position: absolute;
-  top: -8px;
-  right: -8px;
-  background: var(--icon-badge-bg);
-  color: var(--icon-badge-color);
+  top: -5px;
+  right: -5px;
+  background: var(--icon-badge-bg, #000);
+  color: var(--icon-badge-color, #fff);
+  font-size: 10px;
+  font-weight: bold;
   border-radius: 50%;
-  padding: 2px 5px;
+  padding: 2px 6px;
+  line-height: 1;
+  min-width: 16px;
+  text-align: center;
+  pointer-events: none; /* So badge doesn't block clicks */
+  box-sizing: border-box;
 }
 
 .nav-links ul {
@@ -186,6 +235,10 @@ nav ul li a {
   bottom: -5px;
   left: 0;
 }
+.nav-links {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.08); /* subtle shadow */
+}
+
 
 /* -------------------- Mobile View -------------------- */
 @media (max-width: 768px) {
@@ -256,6 +309,8 @@ nav ul li a {
   padding: 40px 0 20px;
   background-color: #f8f8f8;
   border-bottom: 1px solid #ddd;
+  padding-top: 8%;
+  padding-bottom: 2.2%;
 }
 
 .about-header h1 {
@@ -275,9 +330,13 @@ nav ul li a {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: var(--padding);
+
   gap: var(--gap);
   flex-wrap: wrap;
+  padding-top: 5%;
+  padding-left: 5%;
+  padding-right: 5%;
+  padding-bottom: 5%;
 }
 
 .content {
@@ -454,13 +513,13 @@ padding-left: 20px;
 .feature-title {
   font-size: 1.2rem;
   font-weight: bold;
-  color: var(--text-color);
+  color: black;
   margin-bottom: 10px;
 }
 
 .feature-description {
   font-size: 0.95rem;
-  color: var(--text-color);
+  color: black;
 }
 
 /*video section*/
